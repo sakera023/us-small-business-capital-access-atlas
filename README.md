@@ -1,6 +1,7 @@
 # U.S. Small Business Capital Access Atlas
 
 [![CI](https://github.com/sakera023/us-small-business-capital-access-atlas/actions/workflows/ci.yml/badge.svg)](https://github.com/sakera023/us-small-business-capital-access-atlas/actions/workflows/ci.yml)
+[![Live App](https://img.shields.io/badge/Live%20App-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://capital-access-atlas-sakera.streamlit.app/)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 [![Citation](https://img.shields.io/badge/Citation-CFF-blue)](CITATION.cff)
@@ -34,7 +35,7 @@ The projects are complementary but methodologically separate.
 ## Initial capabilities
 
 - official SBA state small-business statistics integration;
-- live discovery of the current SBA workbook through the SBA open-data catalog;
+- retrieval of the official SBA workbook from its verified public distribution URL;
 - automatic U.S. state-name normalization;
 - automatic detection of state-level numeric measures;
 - interactive U.S. choropleth maps;
@@ -74,9 +75,16 @@ It does **not**:
 A place-based score is a research summary of selected public indicators and is only as
 valid as its source data, transformations, weighting choices, and geographic coverage.
 
+## Live application
+
+**Public Atlas:** [Launch the Streamlit application](https://capital-access-atlas-sakera.streamlit.app/)
+
+The application is deployed publicly from the `main` branch and updates from the GitHub
+repository.
+
 ## Application
 
-The Streamlit application is in `app.py`.
+The Streamlit application entry point is `app.py`.
 
 Run locally:
 

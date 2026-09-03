@@ -8,6 +8,7 @@ from capital_access_atlas import (
     summarize_cbp_state_totals,
 )
 
+VALIDATION_PROTOCOL_VERSION = "1.0"
 OUTPUT_DIR = Path("validation")
 
 

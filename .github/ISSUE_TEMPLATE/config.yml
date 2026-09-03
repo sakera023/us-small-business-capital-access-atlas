@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Public Atlas
+    url: https://capital-access-atlas-sakera.streamlit.app/
+    about: Open the live U.S. Small Business Capital Access Atlas.
+  - name: Security Policy
+    url: https://github.com/sakera023/us-small-business-capital-access-atlas/blob/main/SECURITY.md
+    about: Review the security and sensitive-information policy before reporting a vulnerability.

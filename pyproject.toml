@@ -47,6 +47,7 @@ dev = [
 
 [project.urls]
 Homepage = "https://github.com/sakera023/us-small-business-capital-access-atlas"
+Demo = "https://capital-access-atlas-sakera.streamlit.app/"
 Repository = "https://github.com/sakera023/us-small-business-capital-access-atlas"
 Issues = "https://github.com/sakera023/us-small-business-capital-access-atlas/issues"
 Documentation = "https://github.com/sakera023/us-small-business-capital-access-atlas/tree/main/docs"

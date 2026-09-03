@@ -24,6 +24,20 @@ GitHub can also generate citation formats through the repository's
 }
 ```
 
+## PyPI package
+
+The released research software is also available from PyPI:
+
+https://pypi.org/project/us-small-business-capital-access-atlas/
+
+Install:
+
+```bash
+pip install us-small-business-capital-access-atlas
+```
+
+The PyPI distribution and GitHub release refer to the same versioned research software.
+
 ## Cite underlying data separately
 
 When a figure, table, or analysis uses SBA or Census data, cite the original government

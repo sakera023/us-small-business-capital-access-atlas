@@ -4,122 +4,98 @@
 
 **Research prototype. Not an official score.**
 
-The long-term Atlas will support a transparent composite index designed to summarize
-multiple place-based indicators of entrepreneurial activity and capital-access context.
+The Atlas provides a transparent laboratory for studying how multiple place-based
+indicators could be combined. It does not yet publish a formal national Capital Access
+Opportunity Index.
 
 ## Proposed dimensions
 
 ### 1. Entrepreneurial activity
 
-Examples:
-
-- number of small businesses;
-- establishments per capita;
-- business formation indicators;
-- small-business employment.
+Examples include small-business counts, establishments per capita, business formation,
+and small-business employment.
 
 ### 2. Business scale and employment
 
-Examples:
-
-- small-business employment share;
-- annual payroll;
-- employment growth;
-- job creation.
+Examples include employment share, payroll, employment growth, and job creation.
 
 ### 3. Capital-support infrastructure
 
-Examples:
-
-- CDFI presence;
-- community-development lending infrastructure;
-- business-support institutions;
-- potentially relevant public lending-program geography.
+Examples include Certified CDFI organization presence and future measures of
+community-development finance coverage.
 
 ### 4. Economic opportunity
 
-Examples:
-
-- regional income;
-- employment conditions;
-- industry diversity;
-- business growth.
+Examples include income, labor-market conditions, industry diversity, and business growth.
 
 ### 5. Structural access constraints
 
-Examples:
+Examples include rurality, low-income geography, persistent poverty, financial-institution
+coverage, and digital-access context where authoritative sources permit.
 
-- rurality;
-- persistent poverty or low-income geography;
-- limited financial-institution coverage;
-- broadband/digital-access context where an authoritative source is available.
+## Current scoring methods
 
-## Scoring approach
+The Index Lab supports four documented normalization choices.
 
-The current Index Lab converts each selected numeric component to a percentile-based
-0–100 score. Users can:
+### Percentile
 
-- choose component measures;
-- assign non-negative weights; and
-- reverse measures where lower raw values represent a more favorable outcome.
+Raw values are converted to within-sample percentile scores from 0 to 100.
 
-The composite score is the weighted average of available component scores.
+### Standard z-score
 
-## Why percentile scoring
+Values are standardized using the mean and population standard deviation and transformed
+to a 0–100 normal-CDF scale.
 
-Percentile scoring is transparent and easy to interpret, but it has limitations:
+### Winsorized z-score
 
-- scores are relative to the comparison set;
-- distances between percentiles do not equal distances in raw values;
-- rankings can change when geography coverage changes; and
-- outliers may be compressed.
+Values are clipped at the 5th and 95th percentiles before standardization to reduce
+sensitivity to extreme observations.
 
-Future versions should compare percentile scoring with z-score standardization,
-winsorization, and other robust transformations.
+### Robust z-score
 
-## Current robustness diagnostic
+Values are centered on the median and scaled using median absolute deviation (MAD), then
+mapped to the same 0–100 normal-CDF scale.
 
-The public Index Lab includes **leave-one-metric-out sensitivity analysis**. For every
-selected component, the Atlas rebuilds the composite without that metric and reports:
+For an inverse-direction metric, the final score is reflected so that lower raw values
+produce higher component scores.
 
-- mean absolute state-rank shift;
-- maximum absolute state-rank shift; and
-- rank correlation with the baseline specification.
+## Weighting
 
-A large rank shift is evidence that a proposed composite depends heavily on one component.
-That should trigger additional methodological review rather than being hidden from users.
+Users assign non-negative weights. The composite score is the weighted mean of available
+component scores. The implementation also reports `data_coverage`, the share of total
+component weight supported by non-missing values.
 
-See [Validation and Robustness](VALIDATION.md).
+## Robustness diagnostics
 
-## Data coverage
+The Atlas now provides:
 
-The implementation reports the share of component weight supported by non-missing values
-for each geography. A formal index should define a minimum coverage threshold before a
-score is published.
+- leave-one-metric-out sensitivity;
+- normalization sensitivity;
+- one-component weight-emphasis sensitivity;
+- deterministic missing-data stress tests; and
+- normalization rank-correlation outputs.
 
-## Required validation before publishing a formal index
+Large rank changes indicate methodological fragility and should be reported rather than
+hidden.
 
-A formal Atlas index should include:
-
-- documented indicator selection;
-- source-year alignment;
-- missing-data rules;
-- sensitivity to weighting;
-- sensitivity to transformations;
-- geographic stability checks;
-- correlation/redundancy analysis;
-- external expert review;
-- versioned methodology; and
-- reproducible output tables.
+See [Validation and Robustness](VALIDATION.md) and
+[Validation Report](VALIDATION_REPORT.md).
 
 ## Current implementation status
 
-Version 0.2.0 provides an **exploratory methodology laboratory**, not a published national
-ranking. A formal Atlas index remains a future research milestone and will require
-indicator finalization, source-year harmonization, sensitivity analysis, external review,
-and versioned output tables.
+The current implementation is a methodology laboratory. A formal state or county index
+still requires:
+
+- final indicator dictionary;
+- source-year harmonization;
+- minimum coverage rules;
+- indicator correlation/redundancy analysis;
+- temporal stability;
+- external criterion validation;
+- independent methodological review; and
+- versioned published output tables.
 
 ## Interpretation boundary
 
 A high or low score should never be interpreted by itself as proof of discrimination,
-creditworthiness, policy effectiveness, or causal disadvantage.
+creditworthiness, financing availability, policy effectiveness, or causal disadvantage.

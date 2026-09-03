@@ -34,3 +34,23 @@ Examples include a derivative repository, citation, pull request, reproducible i
 public class project, independent replication, or documented organizational test.
 
 Stars and unsupported testimonials are not treated as evidence of impact.
+
+
+## Independent replication
+
+The fastest way to create meaningful external-use evidence is an independent replication.
+
+See:
+
+- [Independent Replication Protocol](docs/REPLICATION_PROTOCOL.md)
+- [Verified External Use Log](docs/ADOPTION_LOG.md)
+- [Research Outreach Kit](docs/OUTREACH_KIT.md)
+
+A successful replication is useful evidence, but a reproducible discrepancy is also
+valuable because it demonstrates real independent technical engagement.
+
+## DOI and archival
+
+The software DOI process is tracked separately in
+[docs/DOI.md](docs/DOI.md). A DOI demonstrates archival/citability; it should not be
+described as independent adoption by itself.

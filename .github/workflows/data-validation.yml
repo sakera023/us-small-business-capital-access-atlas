@@ -5,9 +5,11 @@ on:
   push:
     paths:
       - "src/capital_access_atlas/census_cbp.py"
+      - "src/capital_access_atlas/cdfi.py"
       - "src/capital_access_atlas/analysis.py"
       - "src/capital_access_atlas/indicators.py"
       - "scripts/run_cbp_validation.py"
+      - "scripts/run_cdfi_validation.py"
       - "scripts/run_index_robustness.py"
 
 permissions:
@@ -34,6 +36,9 @@ jobs:
 
       - name: Run state and county validation
         run: python scripts/run_cbp_validation.py
+
+      - name: Validate current Certified CDFI data
+        run: python scripts/run_cdfi_validation.py
 
       - name: Run index robustness benchmark
         run: python scripts/run_index_robustness.py

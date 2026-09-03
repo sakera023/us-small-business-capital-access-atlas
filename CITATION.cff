@@ -8,6 +8,7 @@ authors:
     given-names: "Sakera"
 version: "0.3.0"
 date-released: "2026-09-03"
+doi: "10.5281/zenodo.22277608"
 license: "MIT"
 repository-code: "https://github.com/sakera023/us-small-business-capital-access-atlas"
 url: "https://capital-access-atlas-sakera.streamlit.app/"

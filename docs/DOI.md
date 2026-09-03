@@ -20,10 +20,11 @@ The repository is DOI-ready:
 
 A DOI is **not claimed until Zenodo actually mints one**.
 
-## Required account authorization
+## Repository authorization
 
-Zenodo requires the repository owner to authorize Zenodo's GitHub integration and enable
-this specific repository. That OAuth/account step cannot be performed by repository code.
+The repository owner enabled `sakera023/us-small-business-capital-access-atlas` in the
+Zenodo GitHub integration on 2026-09-03. The next published GitHub release is therefore
+eligible for automatic Zenodo archival and DOI minting.
 
 Official instructions:
 https://help.zenodo.org/docs/github/enable-repository/
@@ -51,7 +52,7 @@ The next archival release should be **v0.3.0**, containing:
 
 Before creating v0.3.0:
 
-1. enable the repository in Zenodo;
+1. confirm the repository is enabled in Zenodo;
 2. update `pyproject.toml`, `CITATION.cff`, and CodeMeta to 0.3.0;
 3. move the Unreleased changelog entries into 0.3.0;
 4. pass CI and public-data validation;

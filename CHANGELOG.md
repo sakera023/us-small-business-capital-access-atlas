@@ -16,4 +16,6 @@ All notable changes to this project are documented here.
 - transparent percentile-based composite scoring;
 - data-source, architecture, methodology, and roadmap documentation;
 - unit tests and Streamlit deployment configuration;
-- citation, contribution, security, and MIT license files.
+- citation, contribution, security, and MIT license files;
+- public Streamlit deployment at `capital-access-atlas-sakera.streamlit.app`;
+- verified direct SBA workbook retrieval to replace the retired CKAN API route.

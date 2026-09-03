@@ -53,6 +53,7 @@ dev = [
 Homepage = "https://github.com/sakera023/us-small-business-capital-access-atlas"
 Demo = "https://capital-access-atlas-sakera.streamlit.app/"
 Repository = "https://github.com/sakera023/us-small-business-capital-access-atlas"
+PyPI = "https://pypi.org/project/us-small-business-capital-access-atlas/"
 Issues = "https://github.com/sakera023/us-small-business-capital-access-atlas/issues"
 Documentation = "https://github.com/sakera023/us-small-business-capital-access-atlas/tree/main/docs"
 "Data Source" = "https://data.sba.gov/dataset/state-small-business-statistics-2025"

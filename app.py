@@ -338,8 +338,9 @@ with tabs[3]:
 with tabs[4]:
     st.subheader("Capital Access Opportunity Index Lab")
     st.write(
-        "Build an exploratory composite from numeric measures in an official SBA worksheet. "
-        "The score is transparent and configurable, but it is not an official index or lending score."
+        "Build an exploratory composite from numeric measures in an official SBA "
+        "worksheet. The score is transparent and configurable, but it is not an "
+        "official index or lending score."
     )
 
     if "sba_workbook" not in st.session_state:
@@ -490,10 +491,12 @@ with tabs[6]:
 
     st.subheader("Methodological principles")
     st.markdown(
-        "1. **Public-data provenance:** every integrated dataset has a named publisher and source.\n"
+        "1. **Public-data provenance:** every integrated dataset has a named "
+        "publisher and source.\n"
         "2. **Geographic transparency:** state/county identifiers and vintage are retained.\n"
         "3. **Component visibility:** composite scores remain inspectable.\n"
-        "4. **Sensitivity analysis:** rankings should be tested against metric removal and weighting.\n"
+        "4. **Sensitivity analysis:** rankings should be tested against metric removal "
+        "and weighting.\n"
         "5. **No applicant underwriting:** this is a place-based research platform.\n"
         "6. **No causal overclaiming:** geographic association is not proof of causation."
     )

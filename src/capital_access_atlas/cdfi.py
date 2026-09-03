@@ -23,7 +23,7 @@ CDFI_CERTIFICATION = {
 }
 
 _CDFI_LINK_PATTERN = re.compile(
-    r"""href=["']([^"']+/media/\d+/download\?inline=?[^"']*)["'][^>]*>
+    r"""href=["']([^"']*/media/\d+/download\?inline=?[^"']*)["'][^>]*>
         \s*List\s+of\s+Currently\s+Certified\s+CDFIs\s*</a>""",
     re.IGNORECASE | re.VERBOSE,
 )

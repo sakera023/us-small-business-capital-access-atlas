@@ -20,7 +20,8 @@ All notable changes to this project are documented here.
 - research impact and external-adoption framework;
 - community conduct standards;
 - professional public dashboard with SBA and Census tabs;
-- versioned v0.2.0 release preparation.
+- versioned v0.2.0 release preparation;
+- published version 0.2.0 to PyPI through GitHub OIDC Trusted Publishing.
 
 ### Changed
 

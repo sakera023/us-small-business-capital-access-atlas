@@ -1,0 +1,42 @@
+name: Public Data Validation
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "src/capital_access_atlas/census_cbp.py"
+      - "src/capital_access_atlas/analysis.py"
+      - "scripts/run_cbp_validation.py"
+
+permissions:
+  contents: read
+
+jobs:
+  census-cbp-validation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-dev.txt
+
+      - name: Run public-data validation
+        run: python scripts/run_cbp_validation.py
+
+      - name: Upload validation artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: census-cbp-2023-validation
+          path: |
+            validation/cbp_2023_state_totals.csv
+            validation/cbp_2023_quality_report.csv

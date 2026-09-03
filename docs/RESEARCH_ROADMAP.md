@@ -57,5 +57,6 @@
 - [x] Citation guide
 - [x] Research impact/adoption framework
 - [x] Versioned GitHub release v0.2.0
+- [x] PyPI package publication
 - [ ] Independent use/adoption documentation
 - [ ] Verified software DOI through a research archive, if pursued

@@ -1,0 +1,43 @@
+name: Branch Housekeeping
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/branch-housekeeping.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  remove-stale-branches:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Remove known merged or superseded branches
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          branches=(
+            "add-verified-zenodo-doi"
+            "complete-roadmap-doi-evidence"
+            "dependabot/github_actions/actions/download-artifact-8"
+            "final-repository-cleanup"
+            "publish-v0.3.0"
+            "refresh-validation-reference"
+            "release-v0.3.0"
+            "trigger-v0.3.0-release"
+          )
+
+          for branch in "${branches[@]}"; do
+            encoded_branch="${branch//\//%2F}"
+            if gh api "repos/${GITHUB_REPOSITORY}/git/ref/heads/${encoded_branch}" >/dev/null 2>&1; then
+              gh api --method DELETE                 "repos/${GITHUB_REPOSITORY}/git/refs/heads/${encoded_branch}"
+              echo "Deleted stale branch: ${branch}"
+            else
+              echo "Branch already absent: ${branch}"
+            fi
+          done

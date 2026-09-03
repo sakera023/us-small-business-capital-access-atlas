@@ -2,7 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "name": "U.S. Small Business Capital Access Atlas",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "datePublished": "2026-09-03",
   "description": "Open-source geospatial research software for integrating, validating, mapping, and comparing U.S. small-business and capital-access context using authoritative public data.",
   "codeRepository": "https://github.com/sakera023/us-small-business-capital-access-atlas",

@@ -18,13 +18,21 @@ All notable changes to this project are documented here.
 - cross-normalization rank-correlation outputs;
 - expanded state/county public-data validation artifacts;
 - independent methodology review package;
-- external-use evidence guide.
+- external-use evidence guide;
+- independent replication protocol and external-use ledger;
+- research outreach kit;
+- Zenodo DOI archival plan.
 
 ### Changed
 
 - public dashboard expanded with County Drill-down, CDFI Capital Support, and richer
   robustness/quality views;
-- validation workflow now processes Census state and county data and index robustness.
+- validation workflow now processes Census state and county data and index robustness;
+- Certified CDFI loader now selects the institution-level worksheet instead of allowing a
+  state-summary sheet to be treated as the full roster;
+- CDFI live validation rejects suspiciously small institution lists;
+- PyPI Trusted Publishing workflow now also runs automatically from published GitHub
+  releases.
 
 ## [0.2.0] - 2026-09-03
 

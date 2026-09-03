@@ -36,7 +36,14 @@ def main() -> None:
     print(f"Workbook: {metadata['resource_url']}")
     print(f"Worksheet: {metadata['worksheet']}")
     print(f"States / DC represented: {state['state'].nunique()}")
-    print(f"Certified organizations represented: {int(state['certified_cdfis'].sum())}")
+    organization_count = int(state["certified_cdfis"].sum())
+    if organization_count < 100:
+        raise RuntimeError(
+            "Certified CDFI validation found fewer than 100 organizations; "
+            "this likely indicates that a summary worksheet was selected."
+        )
+
+    print(f"Certified organizations represented: {organization_count}")
     print("\nQuality report")
     print(quality.to_string(index=False))
 

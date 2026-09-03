@@ -90,3 +90,26 @@ A formal Capital Access Opportunity Index still requires:
 Robustness analysis can show stability under specified analytical choices. It does not
 establish causality, legal discrimination, policy effectiveness, service-area coverage, or
 applicant-level creditworthiness.
+
+
+## Certified CDFI live-source validation
+
+The CDFI workbook contains multiple possible worksheets. A state summary can have perfect
+state-code coverage while containing only one row per state, so state-recognition rate
+alone is not sufficient to identify the institution-level roster.
+
+The loader now:
+
+1. identifies a state column;
+2. requires an organization-name field;
+3. prefers the candidate worksheet with the largest number of recognized organization
+   rows; and
+4. rejects a candidate with fewer than 100 recognized institution-state rows.
+
+The live validation script independently applies the same sanity threshold.
+
+On 2026-09-03, workflow run
+https://github.com/sakera023/us-small-business-capital-access-atlas/actions/runs/33740542343
+selected the official **List of Certified CDFIs** worksheet and represented 1,191
+Certified CDFI organizations across the 50 states and District of Columbia. The official
+list is dynamic, so later counts may differ.

@@ -127,6 +127,12 @@ See [Data Sources](docs/DATA_SOURCES.md) and
 - source metadata preservation; and
 - downloadable clean extracts.
 
+### Certified CDFI validation guard
+
+The live CDFI integration now explicitly prefers the institution-level certification
+worksheet over state-summary sheets and rejects suspiciously small institution lists.
+This prevents a state summary from being misreported as the full Certified CDFI roster.
+
 ### Geographic analysis
 
 - U.S. state choropleths;
@@ -278,7 +284,8 @@ The repository includes:
 - explicit instructions to cite the underlying SBA and Census datasets separately.
 
 No DOI is claimed unless a verified DOI is minted through an external research-software
-archive.
+archive. The repository is prepared for Zenodo archival; see
+[Software DOI and Archival Plan](docs/DOI.md).
 
 ## External milestones that cannot be self-certified
 
@@ -305,7 +312,10 @@ Genuine outside use is encouraged through:
 - public teaching use; and
 - documented organizational testing.
 
-See [ADOPTION.md](ADOPTION.md) and
+See [ADOPTION.md](ADOPTION.md),
+[Independent Replication Protocol](docs/REPLICATION_PROTOCOL.md),
+[Verified External Use Log](docs/ADOPTION_LOG.md),
+[Research Outreach Kit](docs/OUTREACH_KIT.md), and
 [Research Impact and Adoption Framework](docs/RESEARCH_IMPACT.md).
 
 The project does not manufacture stars, users, citations, testimonials, or adoption claims.
@@ -348,6 +358,10 @@ See [Research Roadmap](docs/RESEARCH_ROADMAP.md).
 │   ├── RESEARCH_ROADMAP.md
 │   ├── INDEPENDENT_REVIEW.md
 │   ├── EXTERNAL_USE_EVIDENCE.md
+│   ├── REPLICATION_PROTOCOL.md
+│   ├── ADOPTION_LOG.md
+│   ├── OUTREACH_KIT.md
+│   ├── DOI.md
 │   ├── VALIDATION.md
 │   └── VALIDATION_REPORT.md
 ├── .github/workflows/

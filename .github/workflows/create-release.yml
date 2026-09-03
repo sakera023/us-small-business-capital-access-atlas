@@ -1,10 +1,10 @@
-name: Create v0.2.0 Research Release
+name: Create v0.3.0 Research Release
 
 on:
   workflow_dispatch:
   push:
     paths:
-      - ".github/release-v0.2.0"
+      - ".github/release-v0.3.0"
 
 permissions:
   contents: write
@@ -37,8 +37,8 @@ jobs:
 
           project = tomllib.loads(Path("pyproject.toml").read_text(encoding="utf-8"))
           version = project["project"]["version"]
-          if version != "0.2.0":
-              raise SystemExit(f"Expected 0.2.0, found {version}")
+          if version != "0.3.0":
+              raise SystemExit(f"Expected 0.3.0, found {version}")
           print(f"Verified version: {version}")
           PY
 
@@ -57,8 +57,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if gh release view v0.2.0 >/dev/null 2>&1; then
-            echo "Release v0.2.0 already exists."
+          if gh release view v0.3.0 >/dev/null 2>&1; then
+            echo "Release v0.3.0 already exists."
           else
-            gh release create v0.2.0               --target "${GITHUB_SHA}"               --title "v0.2.0 — Professional Public Research Atlas"               --notes-file RELEASE_NOTES.md               dist/*
+            gh release create v0.3.0               --target "${GITHUB_SHA}"               --title "v0.3.0 — County, CDFI, Robustness & Archival Release"               --notes-file RELEASE_NOTES.md               dist/*
           fi

@@ -69,8 +69,8 @@
 - [x] Verified external-use ledger prepared
 - [x] Research outreach kit prepared
 - [x] Zenodo DOI archival plan prepared
-- [ ] Zenodo repository integration authorized by repository owner
-- [ ] Verified DOI minted from a GitHub release
+- [x] Zenodo repository integration authorized by repository owner
+- [ ] Verified DOI minted from GitHub release v0.3.0
 - [ ] Genuine independent methodology review received
 - [ ] Verified independent use/adoption documented
 - [ ] Verified software DOI added to README, citation metadata, and release records

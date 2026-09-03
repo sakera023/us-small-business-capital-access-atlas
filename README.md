@@ -75,13 +75,15 @@ the Streamlit application.
 The public dashboard provides:
 
 - official SBA state-level small-business measures;
-- official U.S. Census County Business Patterns state totals;
-- interactive U.S. choropleths;
-- state comparison workflows;
+- official U.S. Census County Business Patterns state and county data;
+- state-to-county geographic drill-down with Census TIGERweb boundaries;
+- county establishments, employment, payroll, and industry-concentration analysis;
+- current Certified CDFI organization geography;
+- state and county comparison workflows;
 - downloadable map-ready data;
 - an exploratory Capital Access Opportunity Index Lab;
-- data-quality diagnostics; and
-- leave-one-metric-out index sensitivity analysis.
+- alternative normalization, weight, omission, and missing-data sensitivity diagnostics;
+- data-quality reports and reproducible validation artifacts.
 
 No login or API key is required for the currently integrated public-data layers.
 
@@ -101,9 +103,9 @@ underwriting.
 | Source | Current use | Status |
 | --- | --- | --- |
 | U.S. Small Business Administration, Office of Advocacy | State small-business counts, employment, job creation, ownership and related profile measures | **Integrated** |
-| U.S. Census Bureau, County Business Patterns 2023 | State establishments, employment, annual payroll and first-quarter payroll | **Integrated** |
-| U.S. Census County Business Patterns — county file | County establishments, employment, payroll and industry structure | Planned |
-| CDFI Fund | Community-development finance infrastructure and geographic coverage | Planned |
+| U.S. Census Bureau, County Business Patterns 2023 | State and county establishments, employment, payroll, and industry structure | **Integrated** |
+| U.S. Census Bureau, TIGERweb 2023 | Generalized county geometries for state-to-county mapping | **Integrated** |
+| CDFI Fund — Currently Certified CDFIs | State-level organization geography and a CBP-relative intensity proxy | **Integrated** |
 | U.S. Census Annual Business Survey | Employer-firm and owner-characteristic context | Planned |
 | Bureau of Labor Statistics | Labor-market context | Planned |
 | Bureau of Economic Analysis | Regional income and output context | Planned |
@@ -117,30 +119,36 @@ See [Data Sources](docs/DATA_SOURCES.md) and
 
 - direct retrieval from official U.S. government distribution endpoints;
 - ZIP/Excel ingestion;
-- state FIPS and state-name normalization;
+- state and county FIPS normalization;
 - numeric-field cleaning;
-- state-level aggregation;
+- state and county aggregation;
+- Census ZIP, SBA Excel, and CDFI workbook ingestion;
+- resilient CDFI workbook-link discovery;
 - source metadata preservation; and
 - downloadable clean extracts.
 
 ### Geographic analysis
 
 - U.S. state choropleths;
+- 2023 Census TIGERweb county choropleths;
+- state-to-county drill-down;
+- county industry-concentration HHI;
 - interactive metric selection;
-- state rankings;
-- multi-state comparison;
-- SBA and Census source separation; and
+- state rankings and multi-state comparison;
+- Certified CDFI state geography; and
 - explicit source/vintage labels.
 
 ### Transparent composite-index research
 
 The **Capital Access Opportunity Index Lab** supports:
 
-- percentile-based 0–100 component scoring;
+- percentile, z-score, winsorized z-score, and robust median/MAD normalization;
 - user-defined non-negative weights;
 - inverse-direction metrics;
-- data-coverage reporting; and
-- leave-one-metric-out rank sensitivity.
+- data-coverage reporting;
+- leave-one-metric-out rank sensitivity;
+- one-component weight-emphasis sensitivity; and
+- deterministic missing-data stress testing.
 
 A composite score is never presented without its component inputs and methodology.
 
@@ -152,9 +160,11 @@ The repository includes:
 - unit tests for geography, public-data parsing, index logic, and validation;
 - Streamlit smoke testing;
 - a dedicated public-data validation workflow;
-- machine-readable validation artifacts;
-- reproducible Jupyter examples; and
-- documented case studies.
+- machine-readable state, county, industry-concentration, and robustness artifacts;
+- reproducible Jupyter examples;
+- documented case studies;
+- an independent-review package; and
+- an external-use evidence guide.
 
 See [Validation and Robustness](docs/VALIDATION.md) and
 [Reproducible Public-Data Validation](docs/VALIDATION_REPORT.md).
@@ -270,6 +280,19 @@ The repository includes:
 No DOI is claimed unless a verified DOI is minted through an external research-software
 archive.
 
+## External milestones that cannot be self-certified
+
+Two research milestones intentionally remain external:
+
+- **Independent methodology review:** the repository now provides a structured
+  [review package](docs/INDEPENDENT_REVIEW.md), but completion requires a genuine
+  third-party reviewer.
+- **Verified outside use:** the repository provides an
+  [evidence guide](docs/EXTERNAL_USE_EVIDENCE.md), but adoption is recorded only when
+  real users, organizations, courses, or researchers provide verifiable evidence.
+
+The maintainer does not self-create independent reviews or fabricate adoption evidence.
+
 ## External use and research impact
 
 Genuine outside use is encouraged through:
@@ -306,6 +329,7 @@ See [Research Roadmap](docs/RESEARCH_ROADMAP.md).
 ├── app.py
 ├── src/capital_access_atlas/
 │   ├── analysis.py
+│   ├── cdfi.py
 │   ├── census_cbp.py
 │   ├── geography.py
 │   ├── indicators.py
@@ -322,6 +346,8 @@ See [Research Roadmap](docs/RESEARCH_ROADMAP.md).
 │   ├── INDEX_METHODOLOGY.md
 │   ├── RESEARCH_IMPACT.md
 │   ├── RESEARCH_ROADMAP.md
+│   ├── INDEPENDENT_REVIEW.md
+│   ├── EXTERNAL_USE_EVIDENCE.md
 │   ├── VALIDATION.md
 │   └── VALIDATION_REPORT.md
 ├── .github/workflows/

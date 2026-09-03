@@ -2,6 +2,30 @@
 
 All notable changes to this project are documented here.
 
+## [Unreleased]
+
+### Added
+
+- official Census CBP 2023 county-file integration;
+- county FIPS/GEOID normalization and all-industry county totals;
+- state-to-county drill-down using official Census TIGERweb 2023 boundaries;
+- county establishments, employment, payroll, and industry-concentration HHI;
+- state-scoped county geometry caching in Streamlit;
+- current Certified CDFI workbook discovery and state-level organization geography;
+- Certified CDFIs per 10,000 CBP establishments contextual proxy;
+- percentile, standard z-score, winsorized z-score, and robust median/MAD normalization;
+- normalization, weight, omission, and missing-data sensitivity benchmarks;
+- cross-normalization rank-correlation outputs;
+- expanded state/county public-data validation artifacts;
+- independent methodology review package;
+- external-use evidence guide.
+
+### Changed
+
+- public dashboard expanded with County Drill-down, CDFI Capital Support, and richer
+  robustness/quality views;
+- validation workflow now processes Census state and county data and index robustness.
+
 ## [0.2.0] - 2026-09-03
 
 ### Added

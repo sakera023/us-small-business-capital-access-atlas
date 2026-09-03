@@ -5,8 +5,7 @@
 Recommended citation:
 
 > Begum, S. (2026). *U.S. Small Business Capital Access Atlas* (Version 0.3.0)
-> [Computer software]. GitHub.
-> https://github.com/sakera023/us-small-business-capital-access-atlas
+> [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.22277608
 
 GitHub can also generate citation formats through the repository's
 **Cite this repository** interface using `CITATION.cff`.

@@ -4,6 +4,7 @@
 [![Public Data Validation](https://github.com/sakera023/us-small-business-capital-access-atlas/actions/workflows/data-validation.yml/badge.svg)](https://github.com/sakera023/us-small-business-capital-access-atlas/actions/workflows/data-validation.yml)
 [![Live App](https://img.shields.io/badge/Live%20App-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://capital-access-atlas-sakera.streamlit.app/)
 [![GitHub Release](https://img.shields.io/github/v/release/sakera023/us-small-business-capital-access-atlas)](https://github.com/sakera023/us-small-business-capital-access-atlas/releases/latest)
+[![PyPI](https://img.shields.io/pypi/v/us-small-business-capital-access-atlas.svg)](https://pypi.org/project/us-small-business-capital-access-atlas/)
 [![Citation](https://img.shields.io/badge/Citation-CFF-blue)](CITATION.md)
 [![Google Scholar](https://img.shields.io/badge/Google%20Scholar-Profile-4285F4?logo=googlescholar&logoColor=white)](https://scholar.google.com/citations?user=D4t4wxAAAAAJ)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
@@ -25,11 +26,47 @@ across U.S. geographies.
 - Includes a Python wheel and source distribution as release assets
 - Release was created only after automated linting, tests, and package validation passed
 
-Install the versioned source directly from GitHub:
+Install the published PyPI package:
+
+```bash
+pip install us-small-business-capital-access-atlas
+```
+
+Import it in Python:
+
+```python
+import capital_access_atlas
+```
+
+PyPI project:
+https://pypi.org/project/us-small-business-capital-access-atlas/
+
+For exact source reproducibility, the tagged GitHub version can also be installed with:
 
 ```bash
 pip install "git+https://github.com/sakera023/us-small-business-capital-access-atlas.git@v0.2.0"
 ```
+
+## Python package
+
+The Atlas is published on PyPI as:
+
+`us-small-business-capital-access-atlas`
+
+Install:
+
+```bash
+pip install us-small-business-capital-access-atlas
+```
+
+Python import namespace:
+
+```python
+import capital_access_atlas
+```
+
+This makes the data-retrieval, geography, index, and validation utilities reusable outside
+the Streamlit application.
 
 ## Live public Atlas
 

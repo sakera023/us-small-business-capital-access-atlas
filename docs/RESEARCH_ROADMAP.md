@@ -29,6 +29,7 @@
 
 - [x] Current Certified CDFI public-workbook integration
 - [x] CDFI organization-location normalization to state
+- [x] Institution-level CDFI worksheet selection and live-data sanity guard
 - [x] State Certified CDFI organization-count map
 - [x] Certified CDFIs per 10,000 CBP establishments proxy
 - [ ] Direct CDFI service-area/target-market coverage measure
@@ -64,6 +65,12 @@
 - [x] PyPI package publication
 - [x] Independent-review package prepared
 - [x] External-use evidence framework prepared
+- [x] Independent replication protocol prepared
+- [x] Verified external-use ledger prepared
+- [x] Research outreach kit prepared
+- [x] Zenodo DOI archival plan prepared
+- [ ] Zenodo repository integration authorized by repository owner
+- [ ] Verified DOI minted from a GitHub release
 - [ ] Genuine independent methodology review received
 - [ ] Verified independent use/adoption documented
-- [ ] Verified software DOI through a research archive, if pursued
+- [ ] Verified software DOI added to README, citation metadata, and release records

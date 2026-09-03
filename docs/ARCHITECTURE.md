@@ -1,43 +1,67 @@
 # Architecture
 
-The Atlas separates retrieval, geographic cleaning, index construction, and presentation.
+The Atlas separates public-data retrieval, geographic normalization, descriptive analysis,
+composite-index construction, validation, and presentation.
 
 ```text
-Official Public Sources
-        |
-        v
-  Source Connectors
-        |
-        v
- Data / Geography Cleaning
-        |
-        +------------------+
-        |                  |
-        v                  v
- State/County Metrics   Index Components
-        |                  |
-        +--------+---------+
-                 |
-                 v
-        Geographic Atlas
-                 |
-        +--------+--------+
-        |                 |
-        v                 v
- Interactive Maps     Rankings/Exports
+Official U.S. Public Sources
+   |                    |
+   |                    |
+   v                    v
+ SBA Workbook        Census CBP ZIP
+   |                    |
+   +---------+----------+
+             |
+             v
+   Retrieval + Provenance
+             |
+             v
+ Geographic / Numeric Cleaning
+             |
+      +------+------+
+      |             |
+      v             v
+ Map-Ready Data  Index Components
+      |             |
+      |             v
+      |      Robustness Diagnostics
+      |             |
+      +------+------+
+             |
+             v
+     Streamlit Research UI
+       /      |       \
+      v       v        v
+    Maps   Rankings   Exports
 ```
 
-## Current modules
+## Package modules
 
-- `public_data.py` — official source discovery and retrieval;
-- `geography.py` — state normalization, numeric cleaning, and map-ready aggregation;
-- `indicators.py` — transparent percentile scoring and weighted index construction;
-- `app.py` — Streamlit dashboard.
+- `public_data.py` — SBA source metadata and workbook retrieval;
+- `census_cbp.py` — Census CBP ZIP retrieval, parsing, FIPS normalization, and state totals;
+- `geography.py` — state normalization, numeric cleaning, metric discovery, and map-ready
+  aggregation;
+- `indicators.py` — transparent percentile scoring and weighted composite construction;
+- `analysis.py` — data-quality and leave-one-metric-out sensitivity diagnostics;
+- `app.py` — public Streamlit research dashboard.
+
+## Reproducibility layer
+
+- `tests/` — unit tests with network-independent fixtures;
+- `examples/` — Jupyter research walkthroughs;
+- `scripts/run_cbp_validation.py` — reproducible official-data validation runner;
+- GitHub Actions CI — Python 3.11/3.12, linting, tests, and Streamlit smoke testing;
+- Public Data Validation workflow — downloadable machine-readable validation artifacts.
 
 ## Design principles
 
-1. Public source provenance remains visible.
-2. Raw metrics remain available alongside composite scores.
-3. Retrieval logic is separated from analysis logic.
-4. Tests avoid network dependence.
-5. Composite rankings remain configurable and inspectable.
+1. **Provenance first:** every public source has a named publisher and official URL.
+2. **Separation of concerns:** retrieval, transformation, scoring, validation, and UI are
+   implemented separately.
+3. **Network-independent tests:** parsing and transformation tests use fixtures rather than
+   depending on government endpoints.
+4. **Raw measures remain visible:** composite scores do not replace underlying source data.
+5. **Robustness is part of the method:** index sensitivity is evaluated, not assumed.
+6. **Aggregate research only:** the platform is not designed for applicant-level
+   underwriting.
+7. **Versioned research software:** material changes are documented and released.

@@ -1,57 +1,73 @@
-# Reproducible Public-Data Validation Report
+# Reproducible Public-Data and Index Validation Report
 
 ## Scope
 
-The repository includes an automated validation workflow for the official U.S. Census
-County Business Patterns 2023 state file.
+The repository includes an automated workflow that validates the official U.S. Census
+County Business Patterns 2023 state and county downloads and produces machine-readable
+robustness diagnostics for the exploratory composite-index methodology.
+
+## Public-data workflow
 
 The workflow:
 
-1. downloads the official Census state ZIP;
-2. identifies the data member inside the archive;
-3. normalizes columns;
-4. extracts all-industry state totals;
-5. maps state FIPS codes to abbreviations;
-6. prepares establishments, employment, annual payroll, and first-quarter payroll where
-   present; and
-7. writes a machine-readable data-quality report.
+1. downloads the official Census CBP state ZIP;
+2. extracts all-industry state totals;
+3. downloads the official Census CBP county ZIP;
+4. extracts all-industry county totals;
+5. normalizes state/county FIPS identifiers;
+6. prepares establishments, employment, annual payroll, and first-quarter payroll;
+7. calculates county high-level-sector establishment HHI; and
+8. writes coverage and distribution diagnostics.
+
+## Composite-index robustness workflow
+
+Using official CBP state totals as a transparent methodological benchmark, the workflow
+also compares:
+
+- percentile normalization;
+- standard z-score normalization;
+- winsorized z-score normalization;
+- robust median/MAD z-score normalization;
+- leave-one-component-out scenarios;
+- one-component weight-emphasis scenarios; and
+- 5%, 10%, and 20% missing-data stress scenarios.
+
+The CBP metrics in this benchmark are business-scale variables. The benchmark tests
+**method sensitivity**; it is not presented as a validated substantive capital-access
+index.
 
 ## Reproduce
 
 ```bash
 pip install -r requirements-dev.txt
 python scripts/run_cbp_validation.py
+python scripts/run_index_robustness.py
 ```
 
-Outputs:
+## Machine-readable outputs
 
 ```text
 validation/cbp_2023_state_totals.csv
-validation/cbp_2023_quality_report.csv
+validation/cbp_2023_state_quality.csv
+validation/cbp_2023_county_totals.csv
+validation/cbp_2023_county_quality.csv
+validation/cbp_2023_county_industry_concentration.csv
+validation/index_leave_one_out.csv
+validation/index_normalization_sensitivity.csv
+validation/index_weight_sensitivity.csv
+validation/index_missing_data_stress.csv
+validation/index_normalization_ranks.csv
+validation/index_normalization_rank_correlation.csv
 ```
 
-GitHub Actions also uploads these files as workflow artifacts.
-
-## Validation fields
-
-The quality report records:
-
-- row count;
-- valid values;
-- missing values;
-- coverage rate;
-- unique numeric values;
-- minimum;
-- median; and
-- maximum.
+GitHub Actions uploads the complete `validation/` directory as a versioned workflow
+artifact.
 
 ## Interpretation
 
-This workflow validates retrieval and transformation behavior. It does not independently
-audit Census methodology and does not establish that a public indicator is appropriate for
-a causal claim or an applicant-level decision.
+This process validates retrieval, transformation, completeness, and sensitivity behavior.
+It does not independently audit Census methodology and does not establish causal or legal
+conclusions.
 
-## Future validation
-
-Planned extensions include county-level coverage checks, year-over-year comparisons,
-source-vintage consistency, composite-index sensitivity, and independent replication.
+Independent expert review remains an external milestone and will only be marked complete
+when a real reviewer provides verifiable feedback.

@@ -1,44 +1,49 @@
 # PyPI Publishing
 
-The repository is prepared for secure PyPI publishing through **Trusted Publishing
-(OIDC)**. No long-lived PyPI API token is stored in GitHub.
+## Status
 
-## Pending publisher configuration
+The package is now published on PyPI:
 
-In PyPI Trusted Publisher Management, create a pending publisher with:
+https://pypi.org/project/us-small-business-capital-access-atlas/
 
-- **PyPI project name:** `us-small-business-capital-access-atlas`
-- **GitHub owner:** `sakera023`
-- **Repository:** `us-small-business-capital-access-atlas`
-- **Workflow:** `publish-pypi.yml`
-- **Environment:** `pypi`
+Current published version:
 
-After the publisher is configured, run the **Publish Python package to PyPI** workflow
-manually from GitHub Actions.
+`0.2.0`
 
-## Package import
+Install with:
 
-The distribution name is:
-
-```text
-us-small-business-capital-access-atlas
+```bash
+pip install us-small-business-capital-access-atlas
 ```
 
-The Python import namespace is:
+Python import namespace:
 
 ```python
 import capital_access_atlas
 ```
 
-## Release discipline
+## Trusted Publishing
+
+Publishing uses **PyPI Trusted Publishing (OIDC)** through the GitHub Actions workflow:
+
+`.github/workflows/publish-pypi.yml`
+
+The workflow uses the GitHub environment:
+
+`pypi`
+
+No long-lived PyPI API token is stored in the repository.
+
+## Future release process
 
 Before publishing a new PyPI version:
 
-1. update `pyproject.toml`;
+1. update the version in `pyproject.toml`;
 2. update `CITATION.cff`;
 3. update `CHANGELOG.md`;
-4. pass CI;
-5. create a versioned GitHub release; and
-6. publish the exact tested version.
+4. run CI and public-data validation;
+5. create a versioned GitHub release;
+6. run **Publish Python package to PyPI** from GitHub Actions; and
+7. verify the package page and installation command.
 
-Do not republish a version number with different code.
+A published PyPI version is immutable. Do not reuse a version number for different code.

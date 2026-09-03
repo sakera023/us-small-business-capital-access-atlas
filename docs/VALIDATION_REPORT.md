@@ -71,3 +71,26 @@ conclusions.
 
 Independent expert review remains an external milestone and will only be marked complete
 when a real reviewer provides verifiable feedback.
+
+
+## CDFI correction and verification — 2026-09-03
+
+A live validation review identified that selecting a workbook sheet only by the share of
+recognized state values could choose a state-summary sheet rather than the institution
+roster.
+
+The integration was strengthened to require an organization-name column and prefer the
+institution-level sheet with the greatest number of recognized organization-state rows.
+A live sanity threshold also prevents suspiciously small lists from passing validation.
+
+Validation run:
+https://github.com/sakera023/us-small-business-capital-access-atlas/actions/runs/33740542343
+
+Observed in that run:
+
+- CDFI worksheet: `List of Certified CDFIs`;
+- states / District of Columbia represented: 51; and
+- institution-level Certified CDFIs represented: 1,191.
+
+This figure is a dated validation result, not a permanent count. The CDFI Fund updates the
+official certification list over time.

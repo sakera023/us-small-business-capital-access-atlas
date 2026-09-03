@@ -6,47 +6,51 @@
 - [x] SBA state-statistics integration
 - [x] Census County Business Patterns state integration
 - [x] State-name and FIPS normalization
-- [x] Interactive choropleth mapping
+- [x] Interactive state choropleths
 - [x] State ranking and comparison
 - [x] Downloadable map-ready data
 - [x] Exploratory composite-index laboratory
 - [x] Data-quality diagnostics
-- [x] Leave-one-metric-out sensitivity analysis
-- [x] Methodology and source documentation
 - [x] Automated tests and CI
 - [x] Reproducible public-data validation workflow
 
 ## Phase 2 — County business structure
 
-- [ ] Census CBP county-file integration
-- [ ] County FIPS normalization
-- [ ] County establishment and employment indicators
-- [ ] County payroll indicators
-- [ ] Industry concentration measures
-- [ ] State-to-county drill-down
-- [ ] County map performance/caching strategy
+- [x] Census CBP county-file integration
+- [x] County FIPS/GEOID normalization
+- [x] County establishment and employment indicators
+- [x] County payroll indicators
+- [x] High-level industry-concentration HHI
+- [x] State-to-county drill-down
+- [x] Census TIGERweb 2023 county-boundary integration
+- [x] State-scoped county-geometry caching strategy
 
 ## Phase 3 — Capital-support infrastructure
 
-- [ ] CDFI Fund public-data integration
-- [ ] CDFI institution-location normalization
-- [ ] Community-development finance coverage measures
+- [x] Current Certified CDFI public-workbook integration
+- [x] CDFI organization-location normalization to state
+- [x] State Certified CDFI organization-count map
+- [x] Certified CDFIs per 10,000 CBP establishments proxy
+- [ ] Direct CDFI service-area/target-market coverage measure
 - [ ] Rural/urban capital-support comparison
-- [ ] Low-income/persistent-poverty contextual layer from an authoritative source
-- [ ] Small-business lending/program geography where public data permit
+- [ ] Low-income/persistent-poverty contextual layer
+- [ ] Public small-business lending/program geography where authoritative data permit
 
 ## Phase 4 — National opportunity index
 
 - [ ] Final indicator dictionary
 - [ ] Source-year harmonization
-- [ ] Missing-data policy
-- [ ] Alternative normalization methods
-- [ ] Weight sensitivity scenarios
-- [ ] Transformation sensitivity analysis
-- [ ] Correlation/redundancy analysis
+- [ ] Formal minimum data-coverage policy
+- [x] Alternative normalization methods
+- [x] Weight sensitivity scenarios
+- [x] Transformation sensitivity analysis
+- [x] Missing-data stress tests
+- [x] Cross-normalization rank-correlation outputs
+- [ ] Candidate-indicator correlation/redundancy analysis
 - [ ] Year-over-year stability
+- [ ] External criterion comparison
 - [ ] Independent methodological review
-- [ ] State index release
+- [ ] Formal state index release
 - [ ] County index prototype
 
 ## Phase 5 — Research dissemination
@@ -58,5 +62,8 @@
 - [x] Research impact/adoption framework
 - [x] Versioned GitHub release v0.2.0
 - [x] PyPI package publication
-- [ ] Independent use/adoption documentation
+- [x] Independent-review package prepared
+- [x] External-use evidence framework prepared
+- [ ] Genuine independent methodology review received
+- [ ] Verified independent use/adoption documented
 - [ ] Verified software DOI through a research archive, if pursued

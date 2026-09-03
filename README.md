@@ -17,6 +17,20 @@ data scientists, and policy analysts who need a reproducible way to examine how 
 activity, employment, payroll, entrepreneurial scale, and capital-support context vary
 across U.S. geographies.
 
+## Latest versioned release
+
+**v0.2.0 — Professional Public Research Atlas**
+
+- GitHub release: https://github.com/sakera023/us-small-business-capital-access-atlas/releases/tag/v0.2.0
+- Includes a Python wheel and source distribution as release assets
+- Release was created only after automated linting, tests, and package validation passed
+
+Install the versioned source directly from GitHub:
+
+```bash
+pip install "git+https://github.com/sakera023/us-small-business-capital-access-atlas.git@v0.2.0"
+```
+
 ## Live public Atlas
 
 **Application:** https://capital-access-atlas-sakera.streamlit.app/

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "us-small-business-capital-access-atlas"
-version = "0.1.0"
+version = "0.2.0"
 description = "Open-source geospatial research tools for U.S. small-business capital-access analysis using authoritative public data."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -20,7 +20,11 @@ keywords = [
   "sba",
   "data-science",
   "streamlit",
-  "responsible-ai"
+  "responsible-ai",
+  "census",
+  "county-business-patterns",
+  "research-software",
+  "geographic-inequality"
 ]
 classifiers = [
   "Development Status :: 3 - Alpha",
@@ -52,6 +56,9 @@ Repository = "https://github.com/sakera023/us-small-business-capital-access-atla
 Issues = "https://github.com/sakera023/us-small-business-capital-access-atlas/issues"
 Documentation = "https://github.com/sakera023/us-small-business-capital-access-atlas/tree/main/docs"
 "Data Source" = "https://data.sba.gov/dataset/state-small-business-statistics-2025"
+"Census CBP" = "https://www.census.gov/data/datasets/2023/econ/cbp/2023-cbp.html"
+"Citation" = "https://github.com/sakera023/us-small-business-capital-access-atlas/blob/main/CITATION.md"
+"Google Scholar" = "https://scholar.google.com/citations?user=D4t4wxAAAAAJ"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -1,7 +1,10 @@
 import pandas as pd
 
+from io import BytesIO
+
 from capital_access_atlas.cdfi import (
     discover_cdfi_workbook_url,
+    load_cdfi_certification_workbook,
     merge_cdfi_with_cbp,
     summarize_cdfi_by_state,
 )
@@ -55,3 +58,38 @@ def test_merge_cdfi_with_cbp_calculates_relative_intensity():
 
     assert merged.loc[merged["state"] == "VA", "cdfis_per_10k_establishments"].iloc[0] == 2
     assert merged.loc[merged["state"] == "MD", "cdfis_per_10k_establishments"].iloc[0] == 2
+
+
+
+def test_loader_prefers_institution_detail_sheet_over_state_summary():
+    summary = pd.DataFrame(
+        {
+            "State": ["VA", "MD", "TX"],
+            "Count": [20, 10, 30],
+        }
+    )
+    detail = pd.DataFrame(
+        {
+            "Organization Name": [f"CDFI {index}" for index in range(120)],
+            "State": ["VA", "MD", "TX", "CA"] * 30,
+            "Organization Type": ["Loan Fund"] * 120,
+        }
+    )
+
+    buffer = BytesIO()
+    with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+        summary.to_excel(writer, sheet_name="State Summary", index=False)
+        detail.to_excel(writer, sheet_name="Certified CDFIs", index=False)
+
+    workbook = buffer.getvalue()
+    landing = b'<a href="/media/123456/download?inline=">List of Currently Certified CDFIs</a>'
+
+    def fake_fetch(url):
+        if "programs-training" in url:
+            return landing
+        return workbook
+
+    metadata, frame = load_cdfi_certification_workbook(fake_fetch)
+
+    assert metadata["worksheet"] == "Certified CDFIs"
+    assert len(frame) == 120

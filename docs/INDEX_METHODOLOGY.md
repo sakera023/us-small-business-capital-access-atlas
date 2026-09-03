@@ -77,6 +77,26 @@ Percentile scoring is transparent and easy to interpret, but it has limitations:
 Future versions should compare percentile scoring with z-score standardization,
 winsorization, and other robust transformations.
 
+## Current robustness diagnostic
+
+The public Index Lab includes **leave-one-metric-out sensitivity analysis**. For every
+selected component, the Atlas rebuilds the composite without that metric and reports:
+
+- mean absolute state-rank shift;
+- maximum absolute state-rank shift; and
+- rank correlation with the baseline specification.
+
+A large rank shift is evidence that a proposed composite depends heavily on one component.
+That should trigger additional methodological review rather than being hidden from users.
+
+See [Validation and Robustness](VALIDATION.md).
+
+## Data coverage
+
+The implementation reports the share of component weight supported by non-missing values
+for each geography. A formal index should define a minimum coverage threshold before a
+score is published.
+
 ## Required validation before publishing a formal index
 
 A formal Atlas index should include:
@@ -91,6 +111,13 @@ A formal Atlas index should include:
 - external expert review;
 - versioned methodology; and
 - reproducible output tables.
+
+## Current implementation status
+
+Version 0.2.0 provides an **exploratory methodology laboratory**, not a published national
+ranking. A formal Atlas index remains a future research milestone and will require
+indicator finalization, source-year harmonization, sensitivity analysis, external review,
+and versioned output tables.
 
 ## Interpretation boundary
 

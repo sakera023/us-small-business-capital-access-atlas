@@ -2,6 +2,8 @@ name: Publish Python package to PyPI
 
 on:
   workflow_dispatch:
+  release:
+    types: [published]
 
 permissions:
   contents: read
@@ -46,7 +48,7 @@ jobs:
 
     steps:
       - name: Download distributions
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: python-distributions
           path: dist/

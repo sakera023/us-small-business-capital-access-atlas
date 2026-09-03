@@ -1,11 +1,20 @@
-"""Transparent composite-indicator helpers for atlas research."""
+"""Transparent composite-indicator helpers for Atlas research."""
 
 from __future__ import annotations
+
+from statistics import NormalDist
 
 import numpy as np
 import pandas as pd
 
 from .geography import coerce_numeric_series, normalize_state_abbreviation
+
+NORMALIZATION_METHODS = (
+    "percentile",
+    "zscore",
+    "winsorized_zscore",
+    "robust_zscore",
+)
 
 
 def percentile_score(series: pd.Series, higher_is_better: bool = True) -> pd.Series:
@@ -17,11 +26,61 @@ def percentile_score(series: pd.Series, higher_is_better: bool = True) -> pd.Ser
     return scored
 
 
+def _cdf_score(zscores: pd.Series) -> pd.Series:
+    normal = NormalDist()
+    return zscores.map(
+        lambda value: normal.cdf(float(value)) * 100 if pd.notna(value) else np.nan
+    )
+
+
+def standardized_score(
+    series: pd.Series,
+    method: str = "zscore",
+    higher_is_better: bool = True,
+) -> pd.Series:
+    """Transform a numeric series to a 0-100 score using a documented method."""
+    if method not in NORMALIZATION_METHODS:
+        raise ValueError(
+            f"Unknown normalization method: {method}. "
+            f"Choose from {', '.join(NORMALIZATION_METHODS)}."
+        )
+    if method == "percentile":
+        return percentile_score(series, higher_is_better=higher_is_better)
+
+    numeric = coerce_numeric_series(series)
+
+    if method == "winsorized_zscore":
+        lower = numeric.quantile(0.05)
+        upper = numeric.quantile(0.95)
+        numeric = numeric.clip(lower=lower, upper=upper)
+
+    if method == "robust_zscore":
+        center = numeric.median()
+        mad = (numeric - center).abs().median()
+        scale = float(mad) * 1.4826
+        if not np.isfinite(scale) or scale == 0:
+            method = "zscore"
+        else:
+            scored = _cdf_score((numeric - center) / scale)
+            return scored if higher_is_better else 100 - scored
+
+    center = numeric.mean()
+    scale = numeric.std(ddof=0)
+    if not np.isfinite(scale) or scale == 0:
+        scored = pd.Series(np.nan, index=numeric.index, dtype=float)
+        scored.loc[numeric.notna()] = 50.0
+    else:
+        scored = _cdf_score((numeric - center) / scale)
+
+    return scored if higher_is_better else 100 - scored
+
+
 def build_composite_index(
     frame: pd.DataFrame,
     state_column: str,
     metric_weights: dict[str, float],
     inverse_metrics: set[str] | None = None,
+    normalization: str = "percentile",
 ) -> pd.DataFrame:
     """Build a transparent weighted 0-100 state index from selected metrics.
 
@@ -35,6 +94,8 @@ def build_composite_index(
         Mapping of metric column name to non-negative weight.
     inverse_metrics:
         Metrics where lower raw values should yield a higher index score.
+    normalization:
+        One of percentile, zscore, winsorized_zscore, or robust_zscore.
     """
     if not metric_weights:
         raise ValueError("At least one metric is required.")
@@ -58,8 +119,9 @@ def build_composite_index(
 
     for metric, weight in metric_weights.items():
         component = f"{metric}__score"
-        work[component] = percentile_score(
+        work[component] = standardized_score(
             frame[metric],
+            method=normalization,
             higher_is_better=metric not in inverse_metrics,
         )
         component_columns.append(component)
@@ -83,6 +145,7 @@ def build_composite_index(
         available_weight.replace(0, np.nan)
     )
     aggregated["data_coverage"] = available_weight
+    aggregated["normalization"] = normalization
     return aggregated.sort_values(
         "capital_access_index",
         ascending=False,

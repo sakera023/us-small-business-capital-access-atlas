@@ -20,9 +20,9 @@ across U.S. geographies.
 
 ## Latest versioned release
 
-**v0.2.0 — Professional Public Research Atlas**
+**v0.3.0 — County, CDFI, Robustness & Archival Release**
 
-- GitHub release: https://github.com/sakera023/us-small-business-capital-access-atlas/releases/tag/v0.2.0
+- GitHub release: https://github.com/sakera023/us-small-business-capital-access-atlas/releases/tag/v0.3.0
 - Includes a Python wheel and source distribution as release assets
 - Release was created only after automated linting, tests, and package validation passed
 
@@ -44,7 +44,7 @@ https://pypi.org/project/us-small-business-capital-access-atlas/
 For exact source reproducibility, the tagged GitHub version can also be installed with:
 
 ```bash
-pip install "git+https://github.com/sakera023/us-small-business-capital-access-atlas.git@v0.2.0"
+pip install "git+https://github.com/sakera023/us-small-business-capital-access-atlas.git@v0.3.0"
 ```
 
 ## Python package

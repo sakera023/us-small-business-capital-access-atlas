@@ -87,7 +87,7 @@ with tabs[0]:
     st.subheader("What is integrated now")
     st.markdown(
         "- SBA State Small Business Statistics 2025\n"
-        "- Live source discovery through the SBA open-data catalog\n"
+        "- Verified official SBA workbook retrieval\n"
         "- Automatic state and numeric-field detection\n"
         "- Interactive state choropleths and rankings\n"
         "- A transparent user-configurable composite-index laboratory"
@@ -111,7 +111,10 @@ with st.sidebar:
             with st.spinner("Loading the current official SBA workbook..."):
                 st.session_state["sba_workbook"] = load_official_sba_data()
         except Exception as exc:
-            st.error(f"Unable to load the SBA workbook right now: {exc}")
+            st.error(
+            "Unable to load the official SBA workbook right now. "
+            f"Source error: {exc}"
+        )
 
     if "sba_workbook" in st.session_state:
         metadata, sheets = st.session_state["sba_workbook"]

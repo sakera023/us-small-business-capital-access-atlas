@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from io import BytesIO
+from urllib.request import Request, urlopen
 from zipfile import ZipFile
 
 import pandas as pd
@@ -48,8 +49,17 @@ def _first_data_member(archive: ZipFile) -> str:
     return candidates[0]
 
 
-def load_cbp_state_file(fetch_bytes) -> pd.DataFrame:
-    """Load the official downloadable CBP state file using an injected fetcher."""
+def _fetch_bytes(url: str, timeout: int = 60) -> bytes:
+    request = Request(
+        url,
+        headers={"User-Agent": "us-small-business-capital-access-atlas/0.2"},
+    )
+    with urlopen(request, timeout=timeout) as response:  # noqa: S310
+        return response.read()
+
+
+def load_cbp_state_file(fetch_bytes=_fetch_bytes) -> pd.DataFrame:
+    """Load the official downloadable CBP state file."""
     raw = fetch_bytes(CENSUS_CBP_2023["resource_url"])
     with ZipFile(BytesIO(raw)) as archive:
         member = _first_data_member(archive)

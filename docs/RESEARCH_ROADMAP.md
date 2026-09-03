@@ -56,6 +56,6 @@
 - [x] Documented case studies
 - [x] Citation guide
 - [x] Research impact/adoption framework
-- [ ] Versioned GitHub release v0.2.0
+- [x] Versioned GitHub release v0.2.0
 - [ ] Independent use/adoption documentation
 - [ ] Verified software DOI through a research archive, if pursued

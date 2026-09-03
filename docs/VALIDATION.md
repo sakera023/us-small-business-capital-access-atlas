@@ -109,7 +109,7 @@ The loader now:
 The live validation script independently applies the same sanity threshold.
 
 On 2026-09-03, workflow run
-https://github.com/sakera023/us-small-business-capital-access-atlas/actions/runs/33740542343
+https://github.com/sakera023/us-small-business-capital-access-atlas/actions/runs/33741066574
 selected the official **List of Certified CDFIs** worksheet and represented 1,191
 Certified CDFI organizations across the 50 states and District of Columbia. The official
 list is dynamic, so later counts may differ.

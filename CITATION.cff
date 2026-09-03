@@ -2,14 +2,15 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it and cite the underlying public data sources separately."
 title: "U.S. Small Business Capital Access Atlas"
 type: software
+abstract: "Open-source geospatial research software for integrating, validating, mapping, and comparing U.S. small-business and capital-access context using authoritative public data."
 authors:
   - family-names: "Begum"
     given-names: "Sakera"
-version: "0.1.0"
+version: "0.2.0"
 date-released: "2026-09-03"
 license: "MIT"
 repository-code: "https://github.com/sakera023/us-small-business-capital-access-atlas"
-url: "https://github.com/sakera023/us-small-business-capital-access-atlas"
+url: "https://capital-access-atlas-sakera.streamlit.app/"
 keywords:
   - small business
   - capital access
@@ -18,4 +19,6 @@ keywords:
   - geospatial analysis
   - public data
   - SBA
-  - data science
+  - U.S. Census Bureau
+  - County Business Patterns
+  - research software

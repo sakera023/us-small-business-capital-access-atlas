@@ -41,7 +41,7 @@
 
 ## Phase 5 — Research dissemination
 
-- [ ] Public Streamlit deployment
+- [x] Public Streamlit deployment
 - [ ] Reproducible notebooks
 - [ ] Case studies
 - [ ] Citation guide

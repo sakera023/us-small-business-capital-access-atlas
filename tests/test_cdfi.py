@@ -1,6 +1,6 @@
-import pandas as pd
-
 from io import BytesIO
+
+import pandas as pd
 
 from capital_access_atlas.cdfi import (
     discover_cdfi_workbook_url,

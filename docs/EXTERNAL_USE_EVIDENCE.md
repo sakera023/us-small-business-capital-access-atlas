@@ -49,3 +49,18 @@ substantive adoption by itself.
 
 Do not publish private business records, applicant data, personal information, internal
 emails, or confidential agreements merely to document use.
+
+
+## Replication pathway
+
+External users can follow the
+[Independent Replication Protocol](REPLICATION_PROTOCOL.md) and submit a
+**Research / Adoption Report** or **Independent Replication Report** issue.
+
+Verified uses are recorded in [ADOPTION_LOG.md](ADOPTION_LOG.md).
+
+## Outreach pathway
+
+The [Research Outreach Kit](OUTREACH_KIT.md) provides neutral invitations for researchers,
+educators, and economic-development practitioners. An invitation is not counted as
+evidence; only actual external use, review, reproduction, citation, or extension is logged.

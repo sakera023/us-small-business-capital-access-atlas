@@ -6,7 +6,9 @@ on:
     paths:
       - "src/capital_access_atlas/census_cbp.py"
       - "src/capital_access_atlas/analysis.py"
+      - "src/capital_access_atlas/indicators.py"
       - "scripts/run_cbp_validation.py"
+      - "scripts/run_index_robustness.py"
 
 permissions:
   contents: read
@@ -30,13 +32,14 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements-dev.txt
 
-      - name: Run public-data validation
+      - name: Run state and county validation
         run: python scripts/run_cbp_validation.py
 
+      - name: Run index robustness benchmark
+        run: python scripts/run_index_robustness.py
+
       - name: Upload validation artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: census-cbp-2023-validation
-          path: |
-            validation/cbp_2023_state_totals.csv
-            validation/cbp_2023_quality_report.csv
+          name: atlas-public-data-validation
+          path: validation/

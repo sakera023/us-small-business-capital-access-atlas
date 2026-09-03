@@ -116,21 +116,54 @@ def load_cdfi_certification_workbook(fetch_bytes=_fetch_bytes) -> tuple[dict, pd
     for sheet_name, sheet in sheets.items():
         cleaned = _clean_sheet(sheet)
         state_column = detect_state_column(cleaned)
-        if state_column:
-            recognized = (
-                cleaned[state_column]
-                .dropna()
-                .head(500)
-                .map(normalize_state_abbreviation)
-                .notna()
-                .mean()
+        if not state_column:
+            continue
+
+        organization_column = _find_column(
+            cleaned,
+            ("organization name", "cdfi name", "institution name", "organization"),
+        )
+        recognized_states = cleaned[state_column].map(normalize_state_abbreviation)
+        recognized_count = int(recognized_states.notna().sum())
+        nonempty_rows = int(cleaned.dropna(axis=0, how="all").shape[0])
+        recognized_share = (
+            float(recognized_count / nonempty_rows) if nonempty_rows else 0.0
+        )
+
+        candidates.append(
+            (
+                organization_column is not None,
+                recognized_count,
+                recognized_share,
+                str(sheet_name),
+                cleaned,
+                state_column,
             )
-            candidates.append((float(recognized), str(sheet_name), cleaned, state_column))
+        )
 
     if not candidates:
         raise ValueError("No state-level Certified CDFI worksheet could be identified.")
 
-    _, sheet_name, frame, state_column = max(candidates, key=lambda item: item[0])
+    (
+        has_organization_column,
+        recognized_count,
+        _,
+        sheet_name,
+        frame,
+        state_column,
+    ) = max(candidates, key=lambda item: (item[0], item[1], item[2]))
+
+    if not has_organization_column:
+        raise ValueError(
+            "A state-level worksheet was found, but no organization-name column "
+            "could be identified."
+        )
+    if recognized_count < 100:
+        raise ValueError(
+            "The selected Certified CDFI worksheet contains fewer than 100 recognized "
+            "organization-state rows; refusing to treat a summary sheet as the "
+            "institution-level certification list."
+        )
     metadata = {
         "label": CDFI_CERTIFICATION["label"],
         "publisher": CDFI_CERTIFICATION["publisher"],

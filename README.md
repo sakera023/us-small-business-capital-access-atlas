@@ -5,6 +5,7 @@
 [![Live App](https://img.shields.io/badge/Live%20App-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://capital-access-atlas-sakera.streamlit.app/)
 [![GitHub Release](https://img.shields.io/github/v/release/sakera023/us-small-business-capital-access-atlas)](https://github.com/sakera023/us-small-business-capital-access-atlas/releases/latest)
 [![PyPI](https://img.shields.io/pypi/v/us-small-business-capital-access-atlas.svg)](https://pypi.org/project/us-small-business-capital-access-atlas/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22277607.svg)](https://doi.org/10.5281/zenodo.22277607)
 [![Citation](https://img.shields.io/badge/Citation-CFF-blue)](CITATION.md)
 [![Google Scholar](https://img.shields.io/badge/Google%20Scholar-Profile-4285F4?logo=googlescholar&logoColor=white)](https://scholar.google.com/citations?user=D4t4wxAAAAAJ)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
@@ -283,9 +284,14 @@ The repository includes:
 - [codemeta.json](codemeta.json) for machine-readable research-software metadata; and
 - explicit instructions to cite the underlying SBA and Census datasets separately.
 
-No DOI is claimed unless a verified DOI is minted through an external research-software
-archive. The repository is prepared for Zenodo archival; see
-[Software DOI and Archival Plan](docs/DOI.md).
+The software is archived in Zenodo.
+
+- **Concept DOI (all versions):** https://doi.org/10.5281/zenodo.22277607
+- **Version 0.3.0 DOI:** https://doi.org/10.5281/zenodo.22277608
+
+Use the concept DOI when citing the evolving software project as a whole, and the
+version-specific DOI when citing the exact 0.3.0 archived release. See
+[Software DOI and Archival Record](docs/DOI.md).
 
 ## External milestones that cannot be self-certified
 

@@ -33,6 +33,9 @@
     "https://capital-access-atlas-sakera.streamlit.app/",
     "https://scholar.google.com/citations?user=D4t4wxAAAAAJ",
     "https://data.sba.gov/dataset/state-small-business-statistics-2025",
-    "https://www.census.gov/data/datasets/2023/econ/cbp/2023-cbp.html"
-  ]
+    "https://www.census.gov/data/datasets/2023/econ/cbp/2023-cbp.html",
+    "https://doi.org/10.5281/zenodo.22277608"
+  ],
+  "identifier": "https://doi.org/10.5281/zenodo.22277608",
+  "sameAs": "https://doi.org/10.5281/zenodo.22277607"
 }

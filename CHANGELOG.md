@@ -23,7 +23,9 @@ All notable changes to this project are documented here.
 - external-use evidence guide;
 - independent replication protocol and external-use ledger;
 - research outreach kit;
-- Zenodo DOI archival plan.
+- Zenodo DOI archival plan;
+- verified Zenodo concept DOI `10.5281/zenodo.22277607`;
+- verified version 0.3.0 DOI `10.5281/zenodo.22277608`.
 
 ### Changed
 

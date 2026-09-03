@@ -4,9 +4,8 @@
 
 Recommended citation:
 
-> Begum, S. (2026). *U.S. Small Business Capital Access Atlas* (Version 0.2.0)
-> [Computer software]. GitHub.
-> https://github.com/sakera023/us-small-business-capital-access-atlas
+> Begum, S. (2026). *U.S. Small Business Capital Access Atlas* (Version 0.3.0)
+> [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.22277608
 
 GitHub can also generate citation formats through the repository's
 **Cite this repository** interface using `CITATION.cff`.
@@ -18,9 +17,10 @@ GitHub can also generate citation formats through the repository's
   author    = {Sakera Begum},
   title     = {U.S. Small Business Capital Access Atlas},
   year      = {2026},
-  version   = {0.2.0},
-  publisher = {GitHub},
-  url       = {https://github.com/sakera023/us-small-business-capital-access-atlas}
+  version   = {0.3.0},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.22277608},
+  url       = {https://doi.org/10.5281/zenodo.22277608}
 }
 ```
 
@@ -50,7 +50,12 @@ Current integrated sources:
 
 See [Data Sources](docs/DATA_SOURCES.md) for provenance links.
 
-## DOI status
+## Zenodo DOI
 
-The repository does not claim a DOI unless a verified DOI is minted through an external
-research-software archive. Do not use a placeholder DOI.
+The software has a verified Zenodo archival DOI.
+
+- **Concept DOI (all versions):** https://doi.org/10.5281/zenodo.22277607
+- **Version 0.3.0 DOI:** https://doi.org/10.5281/zenodo.22277608
+
+For a reproducible citation of version 0.3.0, cite the version-specific DOI. For a citation
+that should always resolve to the latest archived version, use the concept DOI.

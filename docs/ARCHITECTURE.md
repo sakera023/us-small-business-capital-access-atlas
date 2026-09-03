@@ -1,67 +1,78 @@
 # Architecture
 
-The Atlas separates public-data retrieval, geographic normalization, descriptive analysis,
-composite-index construction, validation, and presentation.
+The Atlas separates authoritative-source retrieval, geographic normalization,
+descriptive analysis, composite-index construction, validation, and presentation.
 
 ```text
-Official U.S. Public Sources
-   |                    |
-   |                    |
-   v                    v
- SBA Workbook        Census CBP ZIP
-   |                    |
-   +---------+----------+
-             |
-             v
-   Retrieval + Provenance
-             |
-             v
- Geographic / Numeric Cleaning
-             |
-      +------+------+
-      |             |
-      v             v
- Map-Ready Data  Index Components
-      |             |
-      |             v
-      |      Robustness Diagnostics
-      |             |
-      +------+------+
-             |
-             v
-     Streamlit Research UI
-       /      |       \
-      v       v        v
-    Maps   Rankings   Exports
+       Authoritative U.S. Public Sources
+      /             |              \
+     v              v               v
+   SBA Excel    Census CBP ZIP   CDFI Workbook
+                    |
+                    v
+            Census TIGERweb
+              County Geometry
+                    |
+        +-----------+-----------+
+        |                       |
+        v                       v
+ Retrieval / Provenance   Geographic Cleaning
+        |                       |
+        +-----------+-----------+
+                    |
+                    v
+      State + County Research Tables
+          /         |          \
+         v          v           v
+       Maps      Index Lab   Data Quality
+                    |
+                    v
+          Robustness Diagnostics
+                    |
+         +----------+----------+
+         |                     |
+         v                     v
+ Rankings / Exports      Streamlit Atlas
 ```
 
 ## Package modules
 
-- `public_data.py` — SBA source metadata and workbook retrieval;
-- `census_cbp.py` — Census CBP ZIP retrieval, parsing, FIPS normalization, and state totals;
-- `geography.py` — state normalization, numeric cleaning, metric discovery, and map-ready
-  aggregation;
-- `indicators.py` — transparent percentile scoring and weighted composite construction;
-- `analysis.py` — data-quality and leave-one-metric-out sensitivity diagnostics;
-- `app.py` — public Streamlit research dashboard.
+- `public_data.py` — SBA metadata and workbook retrieval;
+- `census_cbp.py` — Census state/county ZIP retrieval, FIPS normalization, county HHI,
+  and TIGERweb boundary access;
+- `cdfi.py` — current Certified CDFI workbook discovery and state-level summaries;
+- `geography.py` — state normalization and map-ready numeric aggregation;
+- `indicators.py` — transparent alternative normalization and composite scoring;
+- `analysis.py` — quality, omission, normalization, weight, and missingness diagnostics;
+- `app.py` — public research dashboard.
+
+## Performance strategy
+
+The 12.7 MB Census county archive is downloaded only when county analysis is requested.
+The application reduces the raw county file to county totals and industry-concentration
+outputs before storing session data.
+
+County boundaries are queried from the official 2023 TIGERweb layer **one state at a
+time** and cached for 24 hours, avoiding a national county-geometry payload on each
+interaction.
 
 ## Reproducibility layer
 
-- `tests/` — unit tests with network-independent fixtures;
-- `examples/` — Jupyter research walkthroughs;
-- `scripts/run_cbp_validation.py` — reproducible official-data validation runner;
-- GitHub Actions CI — Python 3.11/3.12, linting, tests, and Streamlit smoke testing;
-- Public Data Validation workflow — downloadable machine-readable validation artifacts.
+- network-independent parser/unit tests;
+- Python 3.11/3.12 CI;
+- Streamlit health smoke test;
+- state/county public-data validation workflow;
+- index robustness benchmark;
+- machine-readable GitHub Actions artifacts;
+- notebooks, case studies, source documentation, and review materials.
 
 ## Design principles
 
-1. **Provenance first:** every public source has a named publisher and official URL.
-2. **Separation of concerns:** retrieval, transformation, scoring, validation, and UI are
-   implemented separately.
-3. **Network-independent tests:** parsing and transformation tests use fixtures rather than
-   depending on government endpoints.
-4. **Raw measures remain visible:** composite scores do not replace underlying source data.
-5. **Robustness is part of the method:** index sensitivity is evaluated, not assumed.
-6. **Aggregate research only:** the platform is not designed for applicant-level
-   underwriting.
-7. **Versioned research software:** material changes are documented and released.
+1. provenance first;
+2. state/county geography retained explicitly;
+3. retrieval separated from transformations;
+4. raw measures remain visible beside composite scores;
+5. robustness is measured rather than assumed;
+6. CDFI organization location is not misrepresented as service-area coverage;
+7. aggregate research is separated from applicant-level decision making; and
+8. external review/adoption is never self-certified.

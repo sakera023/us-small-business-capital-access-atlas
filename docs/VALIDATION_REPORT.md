@@ -84,7 +84,7 @@ institution-level sheet with the greatest number of recognized organization-stat
 A live sanity threshold also prevents suspiciously small lists from passing validation.
 
 Validation run:
-https://github.com/sakera023/us-small-business-capital-access-atlas/actions/runs/33740542343
+https://github.com/sakera023/us-small-business-capital-access-atlas/actions/runs/33741066574
 
 Observed in that run:
 

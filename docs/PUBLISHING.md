@@ -34,6 +34,12 @@ The workflow uses the GitHub environment:
 
 No long-lived PyPI API token is stored in the repository.
 
+## Release-triggered publishing
+
+The workflow now runs automatically when a GitHub release is published and can also be
+started manually with `workflow_dispatch`. This keeps the PyPI version aligned with a
+versioned GitHub release while retaining a manual recovery path.
+
 ## Future release process
 
 Before publishing a new PyPI version:
@@ -43,7 +49,8 @@ Before publishing a new PyPI version:
 3. update `CHANGELOG.md`;
 4. run CI and public-data validation;
 5. create a versioned GitHub release;
-6. run **Publish Python package to PyPI** from GitHub Actions; and
-7. verify the package page and installation command.
+6. publish the GitHub release (which automatically starts the PyPI workflow);
+7. verify the GitHub Actions publishing run; and
+8. verify the PyPI package page and installation command.
 
 A published PyPI version is immutable. Do not reuse a version number for different code.
